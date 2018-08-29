@@ -8,18 +8,18 @@ namespace Circustrein
 {
     class Dier
     {
-        public enum Maat
+        public enum Maten
         {
             Groot = 5,
             Middelgroot = 3,
             Klein = 1
         }
         
-        public Maat Grootte;
+        public Maten Grootte;
         public bool Vleeseter { get; set; }
         public string Naam { get; set; }
 
-        public Dier(Maat dierMaat, bool eetVlees, string dierNaam)
+        public Dier(Maten dierMaat, bool eetVlees, string dierNaam)
         {
             Grootte = dierMaat;
             Vleeseter = eetVlees;

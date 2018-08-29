@@ -25,19 +25,19 @@ namespace Circustrein
         private void btAddDier_Click(object sender, EventArgs e)
         {
             bool eetVlees = rbVleesEter.Checked;
-            Dier.Maat grootte;
+            Dier.Maten grootte;
 
             if (rbGroot.Checked)
             {
-                grootte = Dier.Maat.Groot;
+                grootte = Dier.Maten.Groot;
             }
             else if (rbMiddel.Checked)
             {
-                grootte = Dier.Maat.Middelgroot;
+                grootte = Dier.Maten.Middelgroot;
             }
             else
             {
-                grootte = Dier.Maat.Klein;
+                grootte = Dier.Maten.Klein;
             }
 
             string naam = tbDierNaam.Text;
@@ -84,8 +84,24 @@ namespace Circustrein
                     lbTrein.Items.Add(nieweWagon);
                 } else
                 {
-                    //Planteneters
-                    
+                    //Trein1.Wagons
+                    foreach (Wagon currentWagon in Trein1.Wagons)
+                    {
+                        //Check if currentdier is groter dan de vleeseter
+                        if (currentDier.Grootte > currentWagon.VleesEterMaat())
+                        {
+                            MessageBox.Show("True");
+                        }
+
+                        ////Check voor grootste vleeseter
+                        //if (currentWagon.VleesEterMaat() == Dier.Maten.Groot)
+                        //{
+
+                        //} else if (currentWagon.VleesEterMaat() == Dier.Maten.Middelgroot)
+                        //{
+
+                        //}
+                    }
                 }
 
             }

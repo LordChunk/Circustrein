@@ -10,20 +10,19 @@ namespace Circustrein
     {
         public int ruimte = 10;
 
-        public int wagonNummer;
-
         public List<Dier> Dieren = new List<Dier>();
 
-        public Wagon()
+        public Dier.Maten VleesEterMaat()
         {
-            
+            //Return grootte van vleeseter
+            return Dieren.Find(Dier => Dier.Vleeseter).Grootte;
         }
 
         public void dierAdd(Dier nieuwDier) => Dieren.Add(nieuwDier);
 
         public override string ToString()
         {
-            return "Wagon No. " + wagonNummer;
+            return "Wagon";
         }
     }
 }
