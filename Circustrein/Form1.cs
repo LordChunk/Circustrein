@@ -78,32 +78,55 @@ namespace Circustrein
                     Wagon nieweWagon = new Wagon();
 
                     nieweWagon.dierAdd(currentDier);
-                    nieweWagon.ruimte =- (int) currentDier.Grootte;
 
                     Trein1.addWagon(nieweWagon);
                     lbTrein.Items.Add(nieweWagon);
                 } else
                 {
-                    //Trein1.Wagons
-                    foreach (Wagon currentWagon in Trein1.Wagons)
+                    //Set bool to default
+                    bool dierHasSpot = false;
+
+                    //Cycle door alle huidige wagons voor een plaats voor het dier
+                    for ( int j = 0; j < Trein1.Wagons.Count && !dierHasSpot /*check of dier al een plek heeft */; j++)
                     {
-                        //Check if currentdier is groter dan de vleeseter
-                        if (currentDier.Grootte > currentWagon.VleesEterMaat())
-                        {
-                            MessageBox.Show("True");
-                        }
+                        Wagon currentWagon = Trein1.Wagons[j];
 
-                        ////Check voor grootste vleeseter
-                        //if (currentWagon.VleesEterMaat() == Dier.Maten.Groot)
-                        //{
+                        dierHasSpot = currentWagon.dierAdd(currentDier);
+                    }
+                    //Check of dier niet in een wagon meer kan en maak een nieuwe wagon
+                    if (!dierHasSpot)
+                    {
+                        Wagon nieuweWagon = new Wagon();
 
-                        //} else if (currentWagon.VleesEterMaat() == Dier.Maten.Middelgroot)
-                        //{
-
-                        //}
+                        dierHasSpot = nieuweWagon.dierAdd(currentDier);
                     }
                 }
+            }
+        }
 
+        private void lbWagon_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            int selectedWagonIndex = lbTrein.SelectedIndex;
+            int selectedDierIndex = lbWagon.SelectedIndex;
+
+            Dier selectedDier = Trein1.Wagons[selectedWagonIndex].Dieren[selectedDierIndex];
+
+            labelSelected.Text = "Naam: " + selectedDier.Naam + "\nGrootte:" + selectedDier.Grootte + "\nSoort: " + selectedDier.getSoort();
+        }
+
+        private void lbTrein_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            int selectedIndex = lbTrein.SelectedIndex;
+
+            Wagon selectedWagon = Trein1.Wagons[selectedIndex];
+
+            lbWagon.Items.Clear();
+
+            foreach (Dier wagonDier in selectedWagon.Dieren)
+            {
+                lbWagon.Items.Add(wagonDier);
             }
         }
     }

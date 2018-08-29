@@ -12,7 +12,8 @@ namespace Circustrein
         {
             Groot = 5,
             Middelgroot = 3,
-            Klein = 1
+            Klein = 1,
+            Geen = 0
         }
         
         public Maten Grootte;

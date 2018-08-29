@@ -175,6 +175,7 @@
             this.lbWagon.Name = "lbWagon";
             this.lbWagon.Size = new System.Drawing.Size(156, 433);
             this.lbWagon.TabIndex = 7;
+            this.lbWagon.SelectedIndexChanged += new System.EventHandler(this.lbWagon_SelectedIndexChanged);
             // 
             // lbTrein
             // 
@@ -183,6 +184,7 @@
             this.lbTrein.Name = "lbTrein";
             this.lbTrein.Size = new System.Drawing.Size(156, 433);
             this.lbTrein.TabIndex = 8;
+            this.lbTrein.SelectedIndexChanged += new System.EventHandler(this.lbTrein_SelectedIndexChanged);
             // 
             // btConfirm
             // 
@@ -198,7 +200,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(620, 450);
+            this.ClientSize = new System.Drawing.Size(624, 450);
             this.Controls.Add(this.btConfirm);
             this.Controls.Add(this.lbTrein);
             this.Controls.Add(this.lbWagon);
