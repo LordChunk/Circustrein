@@ -30,6 +30,9 @@ namespace Circustrein
 
         public override string ToString()
         {
+            //orgineel
+            //return Naam;
+            //Tijdelijk voor makkelijker debuggen
             return Grootte +" "+ Vleeseter;
         }
 

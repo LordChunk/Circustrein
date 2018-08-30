@@ -75,12 +75,9 @@ namespace Circustrein
                 Dier currentDier = alleDieren[i];
                 if (currentDier.Vleeseter)
                 {
-                    Wagon nieweWagon = new Wagon();
+                    Wagon nieuweWagon = MaakWagon();
 
-                    nieweWagon.dierAdd(currentDier);
-
-                    Trein1.addWagon(nieweWagon);
-                    lbTrein.Items.Add(nieweWagon);
+                    nieuweWagon.dierAdd(currentDier);
                 } else
                 {
                     //Set bool to default
@@ -96,7 +93,7 @@ namespace Circustrein
                     //Check of dier niet in een wagon meer kan en maak een nieuwe wagon
                     if (!dierHasSpot)
                     {
-                        Wagon nieuweWagon = new Wagon();
+                        Wagon nieuweWagon = MaakWagon();
 
                         dierHasSpot = nieuweWagon.dierAdd(currentDier);
                     }
@@ -104,6 +101,8 @@ namespace Circustrein
             }
         }
 
+
+        //Update listboxes met relevante informatie als je elementen selecteerd
         private void lbWagon_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -128,6 +127,22 @@ namespace Circustrein
             {
                 lbWagon.Items.Add(wagonDier);
             }
+        }
+
+        private Wagon MaakWagon()
+        {
+            Wagon nieuweWagon = new Wagon();
+
+            Trein1.addWagon(nieuweWagon);
+
+            lbTrein.Items.Clear();
+
+            foreach (Wagon currentWagon in Trein1.Wagons)
+            {
+                lbTrein.Items.Add(currentWagon);
+            }
+
+            return nieuweWagon;
         }
     }
 }
