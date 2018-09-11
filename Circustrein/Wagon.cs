@@ -13,7 +13,7 @@ namespace Circustrein
 
         private int ruimte = 10;
 
-        public Dier.Maten VleesEterMaat()
+        public Dier.DierMaat VleesEterMaat()
         {
             //Return grootte van vleeseter
             try
@@ -22,7 +22,7 @@ namespace Circustrein
             }
             catch (Exception e)
             {
-                return Dier.Maten.Geen;
+                return Dier.DierMaat.Geen;
             }
         }
 

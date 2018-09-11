@@ -25,19 +25,19 @@ namespace Circustrein
         private void btAddDier_Click(object sender, EventArgs e)
         {
             bool eetVlees = rbVleesEter.Checked;
-            Dier.Maten grootte;
+            Dier.DierMaat grootte;
 
             if (rbGroot.Checked)
             {
-                grootte = Dier.Maten.Groot;
+                grootte = Dier.DierMaat.Groot;
             }
             else if (rbMiddel.Checked)
             {
-                grootte = Dier.Maten.Middelgroot;
+                grootte = Dier.DierMaat.Middelgroot;
             }
             else
             {
-                grootte = Dier.Maten.Klein;
+                grootte = Dier.DierMaat.Klein;
             }
 
             string naam = tbDierNaam.Text;

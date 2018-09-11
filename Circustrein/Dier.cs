@@ -8,7 +8,7 @@ namespace Circustrein
 {
     class Dier
     {
-        public enum Maten
+        public enum DierMaat
         {
             Groot = 5,
             Middelgroot = 3,
@@ -16,11 +16,11 @@ namespace Circustrein
             Geen = 0
         }
         
-        public Maten Grootte;
+        public DierMaat Grootte;
         public bool Vleeseter { get; set; }
         public string Naam { get; set; }
 
-        public Dier(Maten dierMaat, bool eetVlees, string dierNaam)
+        public Dier(DierMaat dierMaat, bool eetVlees, string dierNaam)
         {
             Grootte = dierMaat;
             Vleeseter = eetVlees;
@@ -33,18 +33,13 @@ namespace Circustrein
             //orgineel
             //return Naam;
             //Tijdelijk voor makkelijker debuggen
-            return Grootte +" "+ Vleeseter;
+            //return Grootte +" "+ Vleeseter;
+            return $"{Grootte} ({(Vleeseter ? "Vlees" : "Planten")})";
         }
 
         public string getSoort()
         {
-            if (Vleeseter)
-            {
-                return "vleeseeter";
-            } else
-            {
-                return "planteneter";
-            }
+            return Vleeseter ? "vleeseeter" : "planteneter";
         }
     }
 }
