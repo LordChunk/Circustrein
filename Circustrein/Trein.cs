@@ -18,7 +18,7 @@ namespace Circustrein
         public List<Dier> sorteerDieren(List<Dier> unorderedDieren)
         {
                                     //Zet vleeseters eerst
-            return unorderedDieren.OrderByDescending(Dier => Dier.Vleeseter)
+            return unorderedDieren.OrderByDescending(Dier => Dier.EetVlees)
                                     //Sorteer van groot naar klein
                                     .ThenByDescending(Dier => (int)Dier.Grootte)
                                     //Convert to list

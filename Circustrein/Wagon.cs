@@ -13,21 +13,36 @@ namespace Circustrein
 
         private int ruimte = 10;
 
-        public Dier.DierMaat VleesEterMaat()
+        public Dier.Groottes VleesEterMaat()
         {
             //Return grootte van vleeseter
-            try
+            
+            // Vind vleeseter in wagon
+            List<Dier> VleesEterLijst = Dieren.Where(Dier => Dier.EetVlees).ToList();
+
+            // Check of wagon een vleeseter heeft
+            if(VleesEterLijst.Count == 0)
             {
-                return Dieren.Find(Dier => Dier.Vleeseter).Grootte;
-            }
-            catch (Exception e)
+                return Dier.Groottes.Geen;
+            } else
             {
-                return Dier.DierMaat.Geen;
+                return VleesEterLijst.First().Grootte;
             }
+
+
+            // try catch voor lege list
+            //try
+            //{
+            //    return Dieren.Find(Dier => Dier.EetVlees).Grootte;
+            //}
+            //catch (Exception e)
+            //{
+            //    return Dier.Groottes.Geen;
+            //}
         }
 
         //public void dierAdd(Dier nieuwDier) => Dieren.Add(nieuwDier);
-        public bool dierAdd(Dier nieuwDier)
+        public bool AddDier(Dier nieuwDier)
         {
             //Check of wagon nog ruimte heeft en het dier in de wagon mag
             if (nieuwDier.Grootte > VleesEterMaat() && (int) nieuwDier.Grootte <= ruimte)

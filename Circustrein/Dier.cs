@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Circustrein
+﻿namespace Circustrein
 {
     class Dier
     {
-        public enum DierMaat
+        public enum Groottes
         {
             Groot = 5,
             Middelgroot = 3,
@@ -16,15 +10,15 @@ namespace Circustrein
             Geen = 0
         }
         
-        public DierMaat Grootte;
-        public bool Vleeseter { get; set; }
+        public Groottes Grootte;
+        public bool EetVlees { get; set; }
         public string Naam { get; set; }
 
-        public Dier(DierMaat dierMaat, bool eetVlees, string dierNaam)
+        public Dier(Groottes grootte, bool eetVlees, string naam)
         {
-            Grootte = dierMaat;
-            Vleeseter = eetVlees;
-            Naam = dierNaam;
+            Grootte = grootte;
+            EetVlees = eetVlees;
+            Naam = naam;
         }
 
 
@@ -34,12 +28,12 @@ namespace Circustrein
             //return Naam;
             //Tijdelijk voor makkelijker debuggen
             //return Grootte +" "+ Vleeseter;
-            return $"{Grootte} ({(Vleeseter ? "Vlees" : "Planten")})";
+            return $"{Grootte} ({(EetVlees ? "Vlees" : "Planten")})";
         }
 
         public string getSoort()
         {
-            return Vleeseter ? "vleeseeter" : "planteneter";
+            return EetVlees ? "vleeseeter" : "planteneter";
         }
     }
 }

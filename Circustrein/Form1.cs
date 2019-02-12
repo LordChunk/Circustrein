@@ -25,19 +25,19 @@ namespace Circustrein
         private void btAddDier_Click(object sender, EventArgs e)
         {
             bool eetVlees = rbVleesEter.Checked;
-            Dier.DierMaat grootte;
+            Dier.Groottes grootte;
 
             if (rbGroot.Checked)
             {
-                grootte = Dier.DierMaat.Groot;
+                grootte = Dier.Groottes.Groot;
             }
             else if (rbMiddel.Checked)
             {
-                grootte = Dier.DierMaat.Middelgroot;
+                grootte = Dier.Groottes.Middelgroot;
             }
             else
             {
-                grootte = Dier.DierMaat.Klein;
+                grootte = Dier.Groottes.Klein;
             }
 
             string naam = tbDierNaam.Text;
@@ -54,11 +54,16 @@ namespace Circustrein
 
             Dier selectedDier = alleDieren[selectedIndex];
 
-            labelSelected.Text = "Naam: "+ selectedDier.Naam + "\nGrootte:" + selectedDier.Grootte +"\nSoort: " + selectedDier.getSoort();
+            labelSelected.Text = "Naam: "+ selectedDier.Naam + 
+                                "\nGrootte:" + selectedDier.Grootte +
+                                "\nSoort: " + selectedDier.getSoort();
         }
 
         private void btConfirm_Click(object sender, EventArgs e)
         {
+            // Dump eventuele oude trein gegevens
+            Trein1.Wagons.Clear();
+
             //Sorteer dierenlijst
             alleDieren = Trein1.sorteerDieren(alleDieren);
 
@@ -73,11 +78,11 @@ namespace Circustrein
             for (int i = 0; i < alleDieren.Count; i++)
             {
                 Dier currentDier = alleDieren[i];
-                if (currentDier.Vleeseter)
+                if (currentDier.EetVlees)
                 {
                     Wagon nieuweWagon = MaakWagon();
 
-                    nieuweWagon.dierAdd(currentDier);
+                    nieuweWagon.AddDier(currentDier);
                 } else
                 {
                     //Set bool to default
@@ -88,14 +93,14 @@ namespace Circustrein
                     {
                         Wagon currentWagon = Trein1.Wagons[j];
 
-                        dierHasSpot = currentWagon.dierAdd(currentDier);
+                        dierHasSpot = currentWagon.AddDier(currentDier);
                     }
                     //Check of dier niet in een wagon meer kan en maak een nieuwe wagon
                     if (!dierHasSpot)
                     {
                         Wagon nieuweWagon = MaakWagon();
 
-                        dierHasSpot = nieuweWagon.dierAdd(currentDier);
+                        dierHasSpot = nieuweWagon.AddDier(currentDier);
                     }
                 }
             }
