@@ -1,20 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Circustrein
 {
     public partial class Form1 : Form
     {
-
-        Trein Trein1 = new Trein();
+        readonly Trein Trein1 = new Trein();
         List<Dier> alleDieren = new List<Dier>();
 
         public Form1()
@@ -22,7 +14,7 @@ namespace Circustrein
             InitializeComponent();
         }
 
-        private void btAddDier_Click(object sender, EventArgs e)
+        private void BtAddDier_Click(object sender, EventArgs e)
         {
             bool eetVlees = rbVleesEter.Checked;
             Dier.Groottes grootte;
@@ -48,7 +40,7 @@ namespace Circustrein
             lbDierenLijst.Items.Add(nieuwDier);
         }
 
-        private void lbDierenLijst_SelectedIndexChanged(object sender, EventArgs e)
+        private void LbDierenLijst_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedIndex = lbDierenLijst.SelectedIndex;
 
@@ -59,7 +51,7 @@ namespace Circustrein
                                 "\nSoort: " + selectedDier.getSoort();
         }
 
-        private void btConfirm_Click(object sender, EventArgs e)
+        private void BtConfirm_Click(object sender, EventArgs e)
         {
             // Dump eventuele oude trein gegevens
             Trein1.Wagons.Clear();
@@ -100,7 +92,7 @@ namespace Circustrein
                     {
                         Wagon nieuweWagon = MaakWagon();
 
-                        dierHasSpot = nieuweWagon.AddDier(currentDier);
+                        nieuweWagon.AddDier(currentDier);
                     }
                 }
             }
@@ -108,7 +100,7 @@ namespace Circustrein
 
 
         //Update listboxes met relevante informatie als je elementen selecteerd
-        private void lbWagon_SelectedIndexChanged(object sender, EventArgs e)
+        private void LbWagon_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             int selectedWagonIndex = lbTrein.SelectedIndex;
@@ -119,7 +111,7 @@ namespace Circustrein
             labelSelected.Text = "Naam: " + selectedDier.Naam + "\nGrootte:" + selectedDier.Grootte + "\nSoort: " + selectedDier.getSoort();
         }
 
-        private void lbTrein_SelectedIndexChanged(object sender, EventArgs e)
+        private void LbTrein_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             int selectedIndex = lbTrein.SelectedIndex;

@@ -28,17 +28,6 @@ namespace Circustrein
             {
                 return VleesEterLijst.First().Grootte;
             }
-
-
-            // try catch voor lege list
-            //try
-            //{
-            //    return Dieren.Find(Dier => Dier.EetVlees).Grootte;
-            //}
-            //catch (Exception e)
-            //{
-            //    return Dier.Groottes.Geen;
-            //}
         }
 
         //public void dierAdd(Dier nieuwDier) => Dieren.Add(nieuwDier);

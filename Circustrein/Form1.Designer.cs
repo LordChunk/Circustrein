@@ -139,7 +139,7 @@
             this.lbDierenLijst.Name = "lbDierenLijst";
             this.lbDierenLijst.Size = new System.Drawing.Size(147, 433);
             this.lbDierenLijst.TabIndex = 3;
-            this.lbDierenLijst.SelectedIndexChanged += new System.EventHandler(this.lbDierenLijst_SelectedIndexChanged);
+            this.lbDierenLijst.SelectedIndexChanged += new System.EventHandler(this.LbDierenLijst_SelectedIndexChanged);
             // 
             // btAddDier
             // 
@@ -149,7 +149,7 @@
             this.btAddDier.TabIndex = 4;
             this.btAddDier.Text = "Voeg dier toe";
             this.btAddDier.UseVisualStyleBackColor = true;
-            this.btAddDier.Click += new System.EventHandler(this.btAddDier_Click);
+            this.btAddDier.Click += new System.EventHandler(this.BtAddDier_Click);
             // 
             // label1
             // 
@@ -175,7 +175,7 @@
             this.lbWagon.Name = "lbWagon";
             this.lbWagon.Size = new System.Drawing.Size(156, 433);
             this.lbWagon.TabIndex = 7;
-            this.lbWagon.SelectedIndexChanged += new System.EventHandler(this.lbWagon_SelectedIndexChanged);
+            this.lbWagon.SelectedIndexChanged += new System.EventHandler(this.LbWagon_SelectedIndexChanged);
             // 
             // lbTrein
             // 
@@ -184,7 +184,7 @@
             this.lbTrein.Name = "lbTrein";
             this.lbTrein.Size = new System.Drawing.Size(156, 433);
             this.lbTrein.TabIndex = 8;
-            this.lbTrein.SelectedIndexChanged += new System.EventHandler(this.lbTrein_SelectedIndexChanged);
+            this.lbTrein.SelectedIndexChanged += new System.EventHandler(this.LbTrein_SelectedIndexChanged);
             // 
             // btConfirm
             // 
@@ -194,7 +194,7 @@
             this.btConfirm.TabIndex = 9;
             this.btConfirm.Text = "Loco- locomotief";
             this.btConfirm.UseVisualStyleBackColor = true;
-            this.btConfirm.Click += new System.EventHandler(this.btConfirm_Click);
+            this.btConfirm.Click += new System.EventHandler(this.BtConfirm_Click);
             // 
             // Form1
             // 
