@@ -31,6 +31,8 @@ namespace Circustrein
 
         public void FillWagons(List<Dier> alleDieren)
         {
+            alleDieren = SorteerDieren(alleDieren);
+
             //maak wagon voor elke vleeseter
             for (int i = 0; i < alleDieren.Count; i++)
             {

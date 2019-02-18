@@ -11,7 +11,7 @@ namespace Circustrein
     {
         public List<Dier> Dieren = new List<Dier>();
 
-        private int ruimte = 10;
+        public int Ruimte { get; private set; } = 10;
 
         private Dier.Groottes GrootsteVleeseter()
         {
@@ -34,10 +34,10 @@ namespace Circustrein
         public bool AddDier(Dier nieuwDier)
         {
             //Check of wagon nog ruimte heeft en het dier in de wagon mag
-            if (nieuwDier.Grootte > GrootsteVleeseter() && (int) nieuwDier.Grootte <= ruimte)
+            if (nieuwDier.Grootte > GrootsteVleeseter() && (int) nieuwDier.Grootte <= Ruimte)
             {
                 Dieren.Add(nieuwDier);
-                ruimte -= Dieren.Sum(Dier => (int) Dier.Grootte);
+                Ruimte = 10 - Dieren.Sum(Dier => (int) Dier.Grootte);
                 return true;
             } else
             {

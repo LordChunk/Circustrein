@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="Dier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Trein.cs" />
+    <Compile Include="Wagon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
