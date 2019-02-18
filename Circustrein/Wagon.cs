@@ -7,13 +7,13 @@ using System.Windows.Forms;
 
 namespace Circustrein
 {
-    class Wagon
+    public class Wagon
     {
         public List<Dier> Dieren = new List<Dier>();
 
         private int ruimte = 10;
 
-        public Dier.Groottes VleesEterMaat()
+        private Dier.Groottes GrootsteVleeseter()
         {
             //Return grootte van vleeseter
             
@@ -34,13 +34,12 @@ namespace Circustrein
         public bool AddDier(Dier nieuwDier)
         {
             //Check of wagon nog ruimte heeft en het dier in de wagon mag
-            if (nieuwDier.Grootte > VleesEterMaat() && (int) nieuwDier.Grootte <= ruimte)
+            if (nieuwDier.Grootte > GrootsteVleeseter() && (int) nieuwDier.Grootte <= ruimte)
             {
                 Dieren.Add(nieuwDier);
                 ruimte -= Dieren.Sum(Dier => (int) Dier.Grootte);
                 return true;
-            }
-            else
+            } else
             {
                 return false;
             }

@@ -1,6 +1,6 @@
 ﻿namespace Circustrein
 {
-    class Dier
+    public class Dier
     {
         public enum Groottes
         {

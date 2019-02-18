@@ -57,44 +57,23 @@ namespace Circustrein
             Trein1.Wagons.Clear();
 
             //Sorteer dierenlijst
-            alleDieren = Trein1.sorteerDieren(alleDieren);
+            alleDieren = Trein1.SorteerDieren(alleDieren);
 
-            //Vul gesorteerde lijst in listbox
+            // Vul gesorteerde lijst in listbox
             lbDierenLijst.Items.Clear();
             foreach (Dier item in alleDieren)
             {
                 lbDierenLijst.Items.Add(item);
             }
+            
+            // Vul de trein
+            lbTrein.Items.Clear();
 
-            //maak wagon voor elke vleeseter
-            for (int i = 0; i < alleDieren.Count; i++)
+            Trein1.FillWagons(alleDieren);
+
+            foreach (Wagon currentWagon in Trein1.Wagons)
             {
-                Dier currentDier = alleDieren[i];
-                if (currentDier.EetVlees)
-                {
-                    Wagon nieuweWagon = MaakWagon();
-
-                    nieuweWagon.AddDier(currentDier);
-                } else
-                {
-                    //Set bool to default
-                    bool dierHasSpot = false;
-
-                    //Cycle door alle huidige wagons voor een plaats voor het dier
-                    for ( int j = 0; j < Trein1.Wagons.Count && !dierHasSpot /*check of dier al een plek heeft */; j++)
-                    {
-                        Wagon currentWagon = Trein1.Wagons[j];
-
-                        dierHasSpot = currentWagon.AddDier(currentDier);
-                    }
-                    //Check of dier niet in een wagon meer kan en maak een nieuwe wagon
-                    if (!dierHasSpot)
-                    {
-                        Wagon nieuweWagon = MaakWagon();
-
-                        nieuweWagon.AddDier(currentDier);
-                    }
-                }
+                lbTrein.Items.Add(currentWagon);
             }
         }
 
@@ -124,22 +103,6 @@ namespace Circustrein
             {
                 lbWagon.Items.Add(wagonDier);
             }
-        }
-
-        private Wagon MaakWagon()
-        {
-            Wagon nieuweWagon = new Wagon();
-
-            Trein1.addWagon(nieuweWagon);
-
-            lbTrein.Items.Clear();
-
-            foreach (Wagon currentWagon in Trein1.Wagons)
-            {
-                lbTrein.Items.Add(currentWagon);
-            }
-
-            return nieuweWagon;
         }
     }
 }
