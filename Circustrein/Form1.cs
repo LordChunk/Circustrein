@@ -53,23 +53,16 @@ namespace Circustrein
 
         private void BtConfirm_Click(object sender, EventArgs e)
         {
-            // Dump eventuele oude trein gegevens
             Trein1.Wagons.Clear();
-
-            ////Sorteer dierenlijst
-            //alleDieren = Trein1.SorteerDieren(alleDieren);
-            // Now handled in method itself
 
             Trein1.FillWagons(alleDieren);
             
-            // Vul gesorteerde lijst in listbox
+            // Vul listboxes
             lbDierenLijst.Items.Clear();
             foreach (Dier item in alleDieren)
             {
                 lbDierenLijst.Items.Add(item);
             }
-
-            // Vul de trein
             lbTrein.Items.Clear();
             foreach (Wagon currentWagon in Trein1.Wagons)
             {
@@ -103,6 +96,11 @@ namespace Circustrein
             {
                 lbWagon.Items.Add(wagonDier);
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

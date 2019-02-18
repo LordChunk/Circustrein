@@ -15,12 +15,8 @@ namespace Circustrein
 
         private Dier.Groottes GrootsteVleeseter()
         {
-            //Return grootte van vleeseter
-            
-            // Vind vleeseter in wagon
             List<Dier> VleesEterLijst = Dieren.Where(Dier => Dier.EetVlees).ToList();
 
-            // Check of wagon een vleeseter heeft
             if(VleesEterLijst.Count == 0)
             {
                 return Dier.Groottes.Geen;
@@ -30,8 +26,7 @@ namespace Circustrein
             }
         }
 
-        //public void dierAdd(Dier nieuwDier) => Dieren.Add(nieuwDier);
-        public bool AddDier(Dier nieuwDier)
+        public bool TryAddDier(Dier nieuwDier)
         {
             //Check of wagon nog ruimte heeft en het dier in de wagon mag
             if (nieuwDier.Grootte > GrootsteVleeseter() && (int) nieuwDier.Grootte <= Ruimte)

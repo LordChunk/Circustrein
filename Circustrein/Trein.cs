@@ -10,9 +10,11 @@ namespace Circustrein
     {
         public List<Wagon> Wagons = new List<Wagon>();
 
-        public Wagon CreateWagon()
+        public Wagon AddDierToNewWagon(Dier dier)
         {
             Wagon NewWagon = new Wagon();
+
+            NewWagon.TryAddDier(dier);
 
             Wagons.Add(NewWagon);
 
@@ -21,11 +23,10 @@ namespace Circustrein
 
         public List<Dier> SorteerDieren(List<Dier> unorderedDieren)
         {
-                                    //Zet vleeseters eerst
+            //Zet vleeseters eerst
             return unorderedDieren.OrderByDescending(Dier => Dier.EetVlees)
                                     //Sorteer van groot naar klein
                                     .ThenByDescending(Dier => (int)Dier.Grootte)
-                                    //Convert to list
                                     .ToList();
         }
 
@@ -33,35 +34,25 @@ namespace Circustrein
         {
             alleDieren = SorteerDieren(alleDieren);
 
-            //maak wagon voor elke vleeseter
-            for (int i = 0; i < alleDieren.Count; i++)
+            foreach (Dier currentDier in alleDieren)
             {
-                Dier currentDier = alleDieren[i];
                 if (currentDier.EetVlees)
                 {
-                    Wagon nieuweWagon = CreateWagon();
-
-                    nieuweWagon.AddDier(currentDier);
+                    AddDierToNewWagon(currentDier);
                 }
                 else
                 {
-                    //Set bool to default
                     bool dierHasSpot = false;
 
-                    //Cycle door alle huidige wagons voor een plaats voor het dier
-                    for (int j = 0; j < Wagons.Count && !dierHasSpot /*check of dier al een plek heeft */; j++)
-                    {
-                        Wagon currentWagon = Wagons[j];
-
-                        dierHasSpot = currentWagon.AddDier(currentDier);
+                    foreach(Wagon currentWagon in Wagons)
+                    { 
+                        dierHasSpot = currentWagon.TryAddDier(currentDier);
+                        if (dierHasSpot) break;
                     }
 
-                    //Check of dier niet in een wagon meer kan en maak een nieuwe wagon
                     if (!dierHasSpot)
                     {
-                        Wagon nieuweWagon = CreateWagon();
-
-                        nieuweWagon.AddDier(currentDier);
+                        AddDierToNewWagon(currentDier);
                     }
                 }
             }

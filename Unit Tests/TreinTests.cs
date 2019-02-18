@@ -14,8 +14,10 @@ namespace Unit_Tests
         {
             Trein trein = new Trein();
 
-            trein.CreateWagon();
-            trein.CreateWagon();
+            Dier dier = new Dier(Dier.Groottes.Geen, false, "nvt");
+
+            trein.AddDierToNewWagon(dier);
+            trein.AddDierToNewWagon(dier);
 
             Assert.AreEqual(2, trein.Wagons.Count);
         }
@@ -38,7 +40,6 @@ namespace Unit_Tests
                 MaakDier(Dier.Groottes.Klein, false);
             }
 
-            // run algorithm
             trein.FillWagons(dieren);
 
             // Get total amount of used space
@@ -47,7 +48,6 @@ namespace Unit_Tests
 
             Assert.AreEqual(expectedRemainingSpace, ActualRemainingSpace);
 
-            // Voeg dieren aan lijst toe
             void MaakDier(Dier.Groottes grootte, bool eetVlees)
             {
                 dieren.Add(new Dier(grootte, eetVlees, "nvt"));

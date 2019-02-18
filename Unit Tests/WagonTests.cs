@@ -22,8 +22,8 @@ namespace Unit_Tests
             Dier plant = new Dier(Dier.Groottes.Klein, false, "nvt");
             Dier vlees = new Dier(Dier.Groottes.Groot, true, "nvt");
 
-            wagon.AddDier(vlees);
-            bool shouldBeFalse = wagon.AddDier(plant);
+            wagon.TryAddDier(vlees);
+            bool shouldBeFalse = wagon.TryAddDier(plant);
 
             Assert.AreEqual(false, shouldBeFalse);
         }
@@ -34,7 +34,7 @@ namespace Unit_Tests
             Wagon wagon = FillWagonWithPlantenEters();
             Dier plantKlein = new Dier(Dier.Groottes.Klein, false, "nvt");
 
-            bool shouldBeFalse = wagon.AddDier(plantKlein);
+            bool shouldBeFalse = wagon.TryAddDier(plantKlein);
 
             Assert.AreEqual(false, shouldBeFalse);
         }
@@ -49,10 +49,10 @@ namespace Unit_Tests
             Dier plantMiddelGroot = new Dier(Dier.Groottes.Middelgroot, false, "nvt");
             Dier plantGroot = new Dier(Dier.Groottes.Groot, false, "nvt");
 
-            wagon.AddDier(plantKlein);
-            wagon.AddDier(plantKlein);
-            wagon.AddDier(plantMiddelGroot);
-            wagon.AddDier(plantGroot);
+            wagon.TryAddDier(plantKlein);
+            wagon.TryAddDier(plantKlein);
+            wagon.TryAddDier(plantMiddelGroot);
+            wagon.TryAddDier(plantGroot);
 
             if(wagon.Ruimte != 0)
             {
